@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LinguaTrace — تعلم الإنجليزية يومياً</title>
+
+<!-- SEO -->
+<meta name="description" content="تعلم الإنجليزية يومياً بطريقة الكتابة الشبحية. 300 عبارة مع ترجمة عربية، نظام XP، وسلسلة يومية تحفّزك على الاستمرار.">
+<meta name="keywords" content="تعلم الإنجليزية, عبارات إنجليزية, تعلم اللغة, LinguaTrace, كتابة شبحية">
+<meta name="author" content="LinguaTrace">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LinguaTrace — تعلم الإنجليزية يومياً">
+<meta property="og:description" content="اكتب 10 عبارات إنجليزية يومياً وتابع تقدمك بنظام XP وسلسلة يومية.">
+<meta property="og:locale" content="ar_AR">
+
+<!-- PWA / Mobile -->
+<meta name="theme-color" content="#1a1714">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LinguaTrace">
+<link id="pwa-manifest" rel="manifest">
+
+<!-- ADSENSE — أضف كودك هنا بعد الموافقة:
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a1714;--ink-soft:#4a4540;--ghost:#ccc8c2;
+  --correct:#1a6348;--wrong:#c0392b;
+  --accent:#b5873a;--accent2:#d4a84b;
+  --fire:#f4701b;--level:#5c5ce0;--review:#9b59b6;
+  --bg:#f5f1ea;--card:#fffdf9;--border:#e8e2d8;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --cairo:'Cairo',system-ui,sans-serif;
+  --arabic:'Noto Naskh Arabic',serif;
+  --safe-top: env(safe-area-inset-top,0px);
+  --safe-bottom: env(safe-area-inset-bottom,0px);
+}
+html,body{height:100%;}
+body{
+  min-height:100vh;background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -5%,rgba(181,135,58,.1) 0%,transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  font-family:var(--cairo);
+  display:flex;flex-direction:column;align-items:center;
+  padding-top:var(--safe-top);
+  padding-bottom:calc(var(--safe-bottom) + 32px);
+}
+
+/* ── VIEWS ── */
+.view{display:none;width:100%;max-width:600px;padding:16px 16px 8px;flex-direction:column;gap:14px;animation:fadeUp .38s ease both;}
+.view.active{display:flex;}
+
+/* ══ ONBOARDING ══ */
+#view-onboarding{justify-content:center;min-height:100vh;padding:24px 20px;}
+.ob-wrap{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;}
+.ob-slides{width:100%;overflow:hidden;position:relative;}
+.ob-track{display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.ob-slide{min-width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;gap:14px;}
+.ob-icon{font-size:4rem;line-height:1;animation:obPulse 2s ease-in-out infinite;}
+.ob-title{font-family:var(--serif);font-size:clamp(1.5rem,6vw,2rem);color:var(--ink);letter-spacing:-.02em;}
+.ob-title span{color:var(--accent);font-style:italic;}
+.ob-text{font-size:.88rem;color:var(--ink-soft);line-height:1.8;max-width:340px;}
+.ob-demo{display:flex;gap:3px;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.3rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 20px;letter-spacing:.04em;}
+.ob-demo .c{color:var(--correct);}.ob-demo .w{color:var(--wrong);}.ob-demo .g{color:var(--ghost);}
+.ob-dots{display:flex;gap:8px;margin-top:20px;}
+.ob-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;cursor:pointer;}
+.ob-dot.active{background:var(--accent);width:24px;border-radius:4px;}
+.ob-nav{display:flex;gap:10px;width:100%;margin-top:14px;}
+.ob-btn-skip{background:transparent;border:1px solid var(--border);border-radius:10px;padding:12px;flex:1;font-family:var(--cairo);font-size:.85rem;color:var(--ink-soft);cursor:pointer;transition:all .15s;}
+.ob-btn-skip:hover{background:var(--card);}
+.ob-btn-next{background:var(--ink);color:#fff;border:none;border-radius:10px;padding:12px 20px;flex:2;font-family:var(--cairo);font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(26,23,20,.2);}
+.ob-btn-next:hover{background:#2d2925;transform:translateY(-1px);}
+.ob-streak-demo{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 32px;}
+.ob-streak-demo .fire{font-size:2.4rem;animation:fireWiggle 2s ease-in-out infinite;}
+.ob-streak-demo .num{font-size:2.4rem;font-weight:800;color:var(--fire);font-family:var(--cairo);}
+.ob-streak-demo .lbl{font-size:.75rem;color:var(--ink-soft);}
+
+/* ══ HOME ══ */
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding-top:6px;}
+.logo{font-family:var(--serif);font-size:1.4rem;color:var(--ink);letter-spacing:-.02em;line-height:1;}
+.logo span{color:var(--accent);font-style:italic;}
+.logo small{display:block;font-family:var(--cairo);font-size:.58rem;color:var(--ink-soft);letter-spacing:.1em;font-style:normal;margin-top:1px;}
+.top-actions{display:flex;gap:6px;}
+.icon-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:6px 9px;cursor:pointer;color:var(--ink-soft);font-size:.72rem;font-family:var(--cairo);display:flex;align-items:center;gap:4px;transition:all .15s;white-space:nowrap;}
+.icon-btn:hover{background:var(--card);}
+.icon-btn.on{color:var(--accent);border-color:rgba(181,135,58,.4);background:rgba(181,135,58,.06);}
+/* ── Streak ── */
+.streak-hero{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 20px 20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.05),0 0 0 1px rgba(255,255,255,.8) inset;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;overflow:hidden;}
+.streak-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(244,112,27,.07) 0%,transparent 70%);pointer-events:none;}
+.streak-fire{font-size:2.6rem;animation:fireWiggle 2s ease-in-out infinite;}
+.streak-num{font-family:var(--cairo);font-weight:800;font-size:clamp(2.4rem,8vw,3.2rem);color:var(--fire);line-height:1;}
+.streak-label{font-size:.8rem;color:var(--ink-soft);}
+.streak-broken{font-size:.7rem;color:var(--wrong);margin-top:2px;}
+.streak-zero .streak-num{color:var(--ghost);}
+.streak-zero .streak-fire{filter:grayscale(1);animation:none;}
+/* ── Stat row ── */
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px 14px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.stat-box-label{font-size:.63rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px;}
+.level-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.level-badge{background:var(--level);color:#fff;font-size:.63rem;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:99px;font-family:var(--cairo);}
+.xp-text{font-size:.65rem;color:var(--ink-soft);}
+.bar-bg{height:6px;background:var(--border);border-radius:99px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:99px;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.xp-bar{background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.goal-bar{background:linear-gradient(90deg,var(--correct),#2d9c6a);}
+.goal-fraction{display:flex;justify-content:space-between;font-size:.65rem;color:var(--ink-soft);margin-top:4px;}
+.goal-fraction strong{color:var(--ink);font-weight:600;}
+/* ── Deck picker ── */
+.deck-label{font-size:.65rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px;}
+.deck-row{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.deck-row::-webkit-scrollbar{display:none;}
+.deck-chip{flex-shrink:0;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 13px;font-family:var(--cairo);font-size:.75rem;color:var(--ink-soft);cursor:pointer;transition:all .18s;white-space:nowrap;}
+.deck-chip:hover{background:var(--bg);}
+.deck-chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+/* ── Total progress ── */
+.total-progress{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:13px 15px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.total-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.total-label{font-size:.73rem;color:var(--ink-soft);}
+.total-count{font-size:.73rem;font-weight:700;color:var(--ink);}
+.total-bar{background:linear-gradient(90deg,var(--accent),var(--accent2));}
+/* ── Tip ── */
+.tip-box{background:rgba(181,135,58,.06);border:1px solid rgba(181,135,58,.2);border-radius:12px;padding:11px 14px;font-size:.77rem;color:var(--ink-soft);line-height:1.65;display:flex;gap:8px;align-items:flex-start;}
+.tip-box .tip-icon{font-size:.9rem;flex-shrink:0;margin-top:1px;}
+/* ── CTA ── */
+.btn-cta{background:linear-gradient(135deg,#1a1714,#2d2925);color:#fff;border:none;border-radius:13px;padding:15px 20px;font-family:var(--cairo);font-size:.98rem;font-weight:700;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:9px;transition:all .2s;letter-spacing:.02em;box-shadow:0 4px 18px rgba(26,23,20,.22);}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(26,23,20,.28);}
+.btn-cta:active{transform:scale(.98);}
+.btn-cta.goal-done{background:linear-gradient(135deg,var(--correct),#2d9c6a);}
+/* ── Install button ── */
+.btn-install{display:none;background:rgba(92,92,224,.1);border:1px solid rgba(92,92,224,.25);border-radius:10px;padding:9px 14px;font-family:var(--cairo);font-size:.75rem;color:var(--level);cursor:pointer;width:100%;align-items:center;justify-content:center;gap:6px;transition:all .2s;}
+.btn-install:hover{background:rgba(92,92,224,.15);}
+/* ── Ad slots ── */
+.ad-slot{width:100%;min-height:80px;background:var(--card);border:1px dashed var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--ghost);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;}
+.ad-slot span{font-size:.56rem;opacity:.55;}
+/* ── Secondary ── */
+.secondary-row{display:flex;gap:7px;flex-wrap:wrap;}
+.btn-sec{flex:1;min-width:0;background:transparent;border:1px solid var(--border);border-radius:9px;padding:8px 6px;font-family:var(--cairo);font-size:.7rem;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;transition:all .15s;}
+.btn-sec:hover{background:var(--card);}
+
+/* ══ PRACTICE ══ */
+.practice-topbar{display:flex;align-items:center;justify-content:space-between;padding-top:4px;}
+.back-btn{background:transparent;border:1px solid var(--border);border-radius:8px;padding:6px 11px;cursor:pointer;color:var(--ink-soft);font-family:var(--cairo);font-size:.72rem;display:flex;align-items:center;gap:4px;transition:all .15s;direction:rtl;}
+.back-btn:hover{background:var(--card);}
+.practice-chips{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+.ps-chip{font-family:var(--cairo);font-size:.65rem;color:var(--ink-soft);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:3px 8px;display:flex;align-items:center;gap:3px;}
+.ps-chip strong{color:var(--ink);}
+.review-badge{background:rgba(155,89,182,.1);border:1px solid rgba(155,89,182,.25);color:var(--review);font-size:.65rem;border-radius:99px;padding:3px 9px;display:none;}
+.review-badge.show{display:inline-flex;}
+.mini-progress{width:100%;height:3px;background:var(--border);border-radius:99px;overflow:hidden;}
+.mini-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s ease;}
+.mini-fill.rv{background:linear-gradient(90deg,var(--review),#c39bd3);}
+/* ── Card ── */
+.card{width:100%;background:var(--card);border:1px solid var(--border);border-radius:15px;padding:32px 38px 28px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.06),0 0 0 1px rgba(255,255,255,.8) inset;display:flex;flex-direction:column;gap:20px;position:relative;outline:none;direction:ltr;text-align:left;}
+.card-num{position:absolute;top:13px;right:16px;font-size:.63rem;color:var(--ghost);letter-spacing:.1em;font-family:var(--serif);font-style:italic;}
+.phrase-display{font-family:var(--serif);font-size:clamp(1.25rem,3.5vw,1.65rem);line-height:1.48;letter-spacing:-.01em;user-select:none;white-space:pre-wrap;word-break:break-word;min-height:58px;cursor:text;}
+.ch{display:inline;transition:color .06s;}
+.ch.ghost{color:var(--ghost);}.ch.correct{color:var(--correct);}.ch.wrong{color:var(--wrong);}
+.cursor{display:inline-block;width:2px;height:1.2em;background:var(--accent);vertical-align:text-bottom;margin-left:1px;animation:blink .9s step-end infinite;}
+.arabic-line{font-family:var(--arabic);font-size:.98rem;color:var(--ink-soft);text-align:right;direction:rtl;border-top:1px solid var(--border);padding-top:13px;line-height:1.8;}
+.card-controls{display:flex;gap:7px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:5px;border:none;border-radius:8px;cursor:pointer;font-family:var(--sans);font-size:.74rem;font-weight:500;letter-spacing:.04em;padding:8px 12px;transition:all .15s;white-space:nowrap;}
+.btn-p{background:var(--ink);color:#fff;flex:1;justify-content:center;}
+.btn-p:hover{background:#2d2925;transform:translateY(-1px);}
+.btn-s{background:transparent;color:var(--ink-soft);border:1px solid var(--border);}
+.btn-s:hover{background:var(--bg);}
+.btn:active{transform:scale(.97)!important;}
+.card-hint{font-size:.62rem;color:var(--ghost);text-align:center;letter-spacing:.06em;text-transform:uppercase;margin-top:-6px;font-family:var(--sans);}
+
+/* ══ STATS ══ */
+.stats-header{display:flex;align-items:center;gap:12px;padding-top:6px;}
+.stats-title{font-family:var(--serif);font-size:1.4rem;color:var(--ink);}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stats-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:4px;}
+.sc-icon{font-size:1.4rem;}
+.sc-val{font-family:var(--cairo);font-size:1.6rem;font-weight:800;color:var(--ink);line-height:1.1;}
+.sc-lbl{font-size:.65rem;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;}
+.sc-acc .sc-val{color:var(--correct);}
+.sc-streak .sc-val{color:var(--fire);}
+.sc-xp .sc-val{color:var(--accent);}
+.sc-level .sc-val{color:var(--level);}
+
+/* ══ MODALS ══ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,23,20,.55);backdrop-filter:blur(6px);z-index:100;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;animation:fadeIn .2s;}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;width:100%;max-width:460px;box-shadow:0 24px 64px rgba(0,0,0,.2);display:flex;flex-direction:column;gap:13px;animation:fadeUp .25s ease both;direction:rtl;max-height:88vh;overflow-y:auto;}
+.modal h2{font-family:var(--cairo);font-size:1.2rem;font-weight:700;color:var(--ink);}
+.modal p{font-size:.76rem;color:var(--ink-soft);line-height:1.7;}
+.modal code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:.72rem;border:1px solid var(--border);}
+.modal-divider{height:1px;background:var(--border);margin:2px 0;}
+.modal textarea{width:100%;height:150px;border:1px solid var(--border);border-radius:10px;padding:10px;font-family:var(--sans);font-size:.78rem;color:var(--ink);background:var(--bg);resize:vertical;outline:none;transition:border-color .2s;direction:ltr;}
+.modal textarea:focus{border-color:var(--accent);}
+.modal-btns{display:flex;gap:7px;flex-wrap:wrap;}
+.bmp{flex:1;background:var(--ink);color:#fff;border:none;border-radius:8px;padding:10px;font-family:var(--cairo);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .15s;}
+.bmp:hover{background:#2d2925;}
+.bms{background:transparent;color:var(--ink-soft);border:1px solid var(--border);border-radius:8px;padding:10px 11px;font-family:var(--cairo);font-size:.76rem;cursor:pointer;transition:all .15s;}
+.bms:hover{background:var(--bg);}
+/* ── Goal modal ── */
+.goal-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:11px;}
+.goal-trophy{font-size:2.8rem;animation:popIn .5s cubic-bezier(.175,.885,.32,1.275) both;}
+.goal-title{font-family:var(--cairo);font-size:1.35rem;font-weight:800;color:var(--ink);}
+.goal-sub{font-size:.8rem;color:var(--ink-soft);line-height:1.7;}
+.streak-badge-lg{display:flex;align-items:center;gap:7px;background:rgba(244,112,27,.08);border:1px solid rgba(244,112,27,.2);border-radius:99px;padding:6px 16px;font-family:var(--cairo);font-weight:700;font-size:.95rem;color:var(--fire);}
+.goal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;width:100%;background:var(--bg);border-radius:12px;border:1px solid var(--border);padding:13px;}
+.gs-item{text-align:center;}
+.gs-val{display:block;font-family:var(--cairo);font-size:1.35rem;font-weight:800;color:var(--accent);}
+.gs-lbl{font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);}
+.review-btn-lg{width:100%;background:linear-gradient(135deg,var(--review),#8e44ad);color:#fff;border:none;border-radius:10px;padding:10px;font-family:var(--cairo);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;display:none;}
+.review-btn-lg.show{display:block;}
+.review-btn-lg:hover{transform:translateY(-1px);}
+.goal-btns{display:flex;gap:7px;width:100%;}
+.goal-btns button{flex:1;}
+
+/* ── CONFETTI ── */
+.confetti-piece{position:fixed;pointer-events:none;z-index:9999;border-radius:2px;animation:confettiFall linear both;}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:calc(24px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(14px);background:var(--ink);color:#fff;font-family:var(--cairo);font-size:.78rem;padding:9px 18px;border-radius:99px;opacity:0;pointer-events:none;z-index:999;transition:all .3s;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── HIDDEN INPUT ── */
+#real-input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;top:0;left:0;font-size:16px;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-6px);}40%{transform:translateX(6px);}60%{transform:translateX(-4px);}80%{transform:translateX(4px);}}
+@keyframes popIn{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+@keyframes correctFlash{0%{background:rgba(26,99,72,.1);}100%{background:transparent;}}
+@keyframes fireWiggle{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg);}}
+@keyframes obPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}  }
+@keyframes confettiFall{from{transform:translateY(-10px) rotate(0);opacity:1;}to{transform:translateY(105vh) rotate(540deg);opacity:0;}}
+.shake{animation:shake .3s ease both;}
+.correct-flash{animation:correctFlash .4s ease both;}
+@media(max-width:480px){.card{padding:22px 16px 18px;}.stats-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ ONBOARDING ══════════════════ -->
+<div id="view-onboarding" class="view">
+  <div class="ob-wrap">
+    <div class="ob-slides">
+      <div class="ob-track" id="ob-track">
+
+        <!-- Slide 1 -->
+        <div class="ob-slide">
+          <div class="ob-icon">✍️</div>
+          <div class="ob-title">مرحباً في Lingua<span>Trace</span></div>
+          <div class="ob-text">الطريقة الأذكى لتعلم الإنجليزية —<br>بالكتابة الشبحية، لا بالحفظ.</div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="ob-slide">
+          <div class="ob-icon">👁️</div>
+          <div class="ob-title">كيف يعمل؟</div>
+          <div class="ob-demo">
+            <span class="c">H</span><span class="c">e</span><span class="w">l</span>
+            <span class="g">l</span><span class="g">o</span>&nbsp;
+            <span class="g">W</span><span class="g">o</span><span class="g">r</span><span class="g">l</span><span class="g">d</span>
+          </div>
+          <div class="ob-text">تظهر العبارة الإنجليزية بلون فاتح.<br>اكتبها حرفاً بحرف — أخضر للصواب 🟢 وأحمر للخطأ 🔴</div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="ob-slide">
+          <div class="ob-streak-demo">
+            <div class="fire">🔥</div>
+            <div class="num">7</div>
+            <div class="lbl">أيام متتالية</div>
+          </div>
+          <div class="ob-title">تحدَّ نفسك يومياً</div>
+          <div class="ob-text">أنجز 10 عبارات يومياً وحافظ على سلسلتك.<br>اكسب XP وارتقِ في المستويات.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ob-dots" id="ob-dots">
+      <div class="ob-dot active" data-i="0"></div>
+      <div class="ob-dot" data-i="1"></div>
+      <div class="ob-dot" data-i="2"></div>
+    </div>
+
+    <div class="ob-nav">
+      <button class="ob-btn-skip" id="ob-skip">تخطي</button>
+      <button class="ob-btn-next" id="ob-next">التالي ←</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ HOME ══════════════════ -->
+<div id="view-home" class="view">
+
+  <div class="top-bar">
+    <div class="logo">Lingua<span>Trace</span><small>تعلّم الإنجليزية بالكتابة اليومية</small></div>
+    <div class="top-actions">
+      <button class="icon-btn on" id="btn-sfx">🔊</button>
+      <button class="icon-btn" id="btn-stats-open">📊</button>
+      <button class="icon-btn" id="btn-open-import">📚</button>
+    </div>
+  </div>
+
+  <div class="streak-hero" id="streak-hero">
+    <div class="streak-fire">🔥</div>
+    <div class="streak-num" id="streak-num">0</div>
+    <div class="streak-label" id="streak-label">يوم متتالي</div>
+    <div class="streak-broken" id="streak-broken" style="display:none">💔 انكسرت السلسلة — ابدأ من جديد!</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-box-label">المستوى والنقاط</div>
+      <div class="level-row">
+        <span class="level-badge" id="level-badge">LV 1</span>
+        <span class="xp-text" id="xp-text">0 / 150 XP</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill xp-bar" id="xp-bar" style="width:0%"></div></div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-label">هدف اليوم</div>
+      <div class="level-row">
+        <span class="level-badge" style="background:var(--correct)" id="goal-badge">0 / 10</span>
+        <span class="xp-text" id="goal-pct-text">0%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill goal-bar" id="goal-bar" style="width:0%"></div></div>
+      <div class="goal-fraction">
+        <span id="goal-today-label">اليوم</span>
+        <strong id="goal-count-label">0 عبارة</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deck Picker -->
+  <div>
+    <div class="deck-label">اختر الوحدة</div>
+    <div class="deck-row" id="deck-row"></div>
+  </div>
+
+  <div class="total-progress">
+    <div class="total-top">
+      <span class="total-label" id="total-deck-label">تقدم الوحدة</span>
+      <span class="total-count" id="total-count-label">0 / 300</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill total-bar" id="total-bar" style="width:0%"></div></div>
+  </div>
+
+  <div class="tip-box" id="tip-box">
+    <span class="tip-icon">💡</span>
+    <span id="tip-text">اقرأ العبارة بصوت عالٍ بعد كتابتها — يساعد ذلك على تثبيتها في الذاكرة طويلة الأمد.</span>
+  </div>
+
+  <button class="btn-cta" id="btn-start">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <span id="cta-label">ابدأ الجلسة اليومية</span>
+  </button>
+
+  <button class="btn-install" id="btn-install">
+    📲 ثبّت التطبيق على هاتفك
+  </button>
+
+  <!-- AD SLOT 1 — الرئيسية -->
+  <div class="ad-slot" id="ad-home">
+    <!-- ADSENSE BANNER — استبدل بكودك:
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    إعلان · Google AdSense Banner
+    <span>728 × 90 — Responsive</span>
+  </div>
+
+  <div class="secondary-row">
+    <button class="btn-sec" id="btn-share-home">📤 شارك</button>
+    <button class="btn-sec" id="btn-export">⬇ تصدير</button>
+    <label class="btn-sec" style="cursor:pointer;">⬆ استيراد<input type="file" id="backup-file" accept=".json" style="display:none"></label>
+    <button class="btn-sec" id="btn-reset-all">↺ تعيين</button>
+  </div>
+
+</div>
+
+<!-- ══════════════════ PRACTICE ══════════════════ -->
+<div id="view-practice" class="view">
+
+  <div class="practice-topbar">
+    <button class="back-btn" id="btn-back">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      الرئيسية
+    </button>
+    <div class="practice-chips">
+      <span class="review-badge" id="review-badge">📝 مراجعة</span>
+      <div class="ps-chip">🔥 <strong id="ps-streak">0</strong></div>
+      <div class="ps-chip">اليوم: <strong id="ps-today">0/10</strong></div>
+      <div class="ps-chip" id="ps-err-chip" style="display:none">❌ <strong id="ps-errors">0</strong></div>
+    </div>
+  </div>
+
+  <div class="mini-progress"><div class="mini-fill" id="mini-fill" style="width:0%"></div></div>
+
+  <div class="card" id="card" tabindex="0" dir="ltr">
+    <input id="real-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text">
+    <div class="card-num" id="card-num">#001</div>
+    <div class="phrase-display" id="phrase-display"></div>
+    <div class="arabic-line" id="arabic-line"></div>
+    <div class="card-controls">
+      <button class="btn btn-p" id="btn-speak">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        استمع
+      </button>
+      <button class="btn btn-s" id="btn-speed">0.85×</button>
+      <button class="btn btn-s" id="btn-skip">تخطي ←</button>
+    </div>
+    <p class="card-hint" style="direction:ltr">click card · type the phrase · Tab to skip</p>
+  </div>
+
+  <!-- AD SLOT 2 — أثناء التدريب -->
+  <div class="ad-slot" id="ad-practice" style="min-height:55px;">
+    إعلان · AdSense
+  </div>
+
+</div>
+
+<!-- ══════════════════ STATS ══════════════════ -->
+<div id="view-stats" class="view">
+  <div class="stats-header">
+    <button class="back-btn" id="btn-stats-back">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      رجوع
+    </button>
+    <div class="stats-title">إحصائياتي</div>
+  </div>
+  <div class="stats-grid">
+    <div class="stats-card sc-streak">
+      <div class="sc-icon">🔥</div>
+      <div class="sc-val" id="sc-streak">0</div>
+      <div class="sc-lbl">أفضل سلسلة</div>
+    </div>
+    <div class="stats-card sc-xp">
+      <div class="sc-icon">⭐</div>
+      <div class="sc-val" id="sc-xp">0</div>
+      <div class="sc-lbl">إجمالي XP</div>
+    </div>
+    <div class="stats-card">
+      <div class="sc-icon">📚</div>
+      <div class="sc-val" id="sc-completed">0</div>
+      <div class="sc-lbl">عبارات أُنجزت</div>
+    </div>
+    <div class="stats-card sc-acc">
+      <div class="sc-icon">🎯</div>
+      <div class="sc-val" id="sc-acc">—</div>
+      <div class="sc-lbl">دقة التعلم</div>
+    </div>
+    <div class="stats-card">
+      <div class="sc-icon">📅</div>
+      <div class="sc-val" id="sc-days">0</div>
+      <div class="sc-lbl">أيام النشاط</div>
+    </div>
+    <div class="stats-card sc-level">
+      <div class="sc-icon">🏆</div>
+      <div class="sc-val" id="sc-level">1</div>
+      <div class="sc-lbl">المستوى الحالي</div>
+    </div>
+  </div>
+  <!-- AD SLOT 3 — Stats -->
+  <div class="ad-slot" style="min-height:70px;">إعلان · AdSense</div>
+</div>
+
+<!-- ══ MODAL: GOAL DONE ══ -->
+<div class="modal-overlay" id="modal-goal">
+  <div class="modal">
+    <div class="goal-inner">
+      <div class="goal-trophy">🎉</div>
+      <div class="goal-title">أتممت هدف اليوم!</div>
+      <div class="goal-sub">أنجزت 10 عبارات إنجليزية اليوم.<br>عُد غداً للحفاظ على سلسلتك!</div>
+      <div class="streak-badge-lg">🔥 <span id="goal-streak-val">1</span> يوم متتالي</div>
+      <div class="goal-stats">
+        <div class="gs-item"><span class="gs-val" id="gs-xp">+150</span><span class="gs-lbl">XP مكتسب</span></div>
+        <div class="gs-item"><span class="gs-val" id="gs-acc">100%</span><span class="gs-lbl">دقة</span></div>
+        <div class="gs-item"><span class="gs-val" id="gs-mistakes">0</span><span class="gs-lbl">أخطاء</span></div>
+      </div>
+      <!-- AD SLOT 4 — Goal Done -->
+      <div class="ad-slot" id="ad-goal" style="min-height:100px;width:100%;">
+        إعلان · 300 × 250
+        <span>Google AdSense Rectangle</span>
+      </div>
+      <button class="review-btn-lg" id="btn-review-mistakes">
+        📝 راجع العبارات الصعبة (<span id="mistakes-count">0</span>)
+      </button>
+      <div class="goal-btns">
+        <button class="bms" id="btn-goal-share">📤 شارك</button>
+        <button class="bmp" id="btn-goal-continue">استمر</button>
+        <button class="bms" id="btn-goal-home">🏠 الرئيسية</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: DECK MANAGER ══ -->
+<div class="modal-overlay" id="modal-import">
+  <div class="modal">
+    <h2>📚 إدارة القوائم</h2>
+    <p><strong>استيراد قائمة مخصصة</strong><br>
+    سطر لكل عبارة: <code>English | الترجمة</code> أو <code>English [TAB] Arabic</code> (Anki)</p>
+    <textarea id="import-text" placeholder="How are you? | كيف حالك؟&#10;Good morning&#9;صباح الخير"></textarea>
+    <div class="modal-btns">
+      <button class="bmp" id="btn-import-save">تحميل القائمة</button>
+      <button class="bms" id="btn-import-reset">↩ الـ 300 الافتراضية</button>
+    </div>
+    <div class="modal-divider"></div>
+    <p><strong>النسخة الاحتياطية</strong><br>صدّر تقدمك واستورده على أي جهاز.</p>
+    <div class="modal-btns">
+      <button class="bmp" id="btn-export-modal">⬇ تصدير JSON</button>
+      <label class="bms" style="cursor:pointer;">⬆ استيراد JSON<input type="file" id="backup-file-modal" accept=".json" style="display:none"></label>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-btns">
+      <button class="bms" id="btn-import-cancel" style="flex:1;">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════════════════
+const DAILY_GOAL=10, XP_PER_PHRASE=15, XP_PER_LEVEL=150;
+const RATES=[0.85,1.0,1.25], RATE_LB=['0.85×','1.00×','1.25×'];
+
+const TIPS=[
+  'اقرأ العبارة بصوت عالٍ بعد كتابتها — يثبّت اللفظ في ذاكرتك.',
+  '10 دقائق يومياً أفضل بكثير من ساعة واحدة في الأسبوع.',
+  'حاول استخدام عبارة واحدة من اليوم في محادثة حقيقية.',
+  'الخطأ ليس فشلاً — هو المرحلة الأولى لبناء العادة.',
+  'الاستماع قبل الكتابة يساعد على التذكر. استخدم زر استمع دائماً.',
+  'كرر العبارات الصعبة أكثر — استخدم وضع المراجعة بعد كل جلسة.',
+  'مشاركة تقدمك مع الأصدقاء يزيد من التزامك بالتعلم.',
+];
+
+// ════════════════════════════════════════════════════
+// PHRASES DATA
+// ════════════════════════════════════════════════════
+const DEFAULT_PHRASES=[
+  {english:"How are you?",arabic:"كيف حالك؟"},
+  {english:"I'm fine, thank you.",arabic:"أنا بخير، شكراً لك."},
+  {english:"What's your name?",arabic:"ما اسمك؟"},
+  {english:"My name is...",arabic:"اسمي هو..."},
+  {english:"Nice to meet you.",arabic:"يسعدني لقاؤك."},
+  {english:"Good morning.",arabic:"صباح الخير."},
+  {english:"Good afternoon.",arabic:"مساء الخير."},
+  {english:"Good evening.",arabic:"طاب مساؤك."},
+  {english:"Good night.",arabic:"تصبح على خير."},
+  {english:"Goodbye.",arabic:"وداعاً."},
+  {english:"See you later.",arabic:"أراك لاحقاً."},
+  {english:"See you tomorrow.",arabic:"أراك غداً."},
+  {english:"How's it going?",arabic:"كيف الأمور؟"},
+  {english:"Not bad, thanks.",arabic:"ليس سيئاً، شكراً."},
+  {english:"How's everything?",arabic:"كيف الأحوال؟"},
+  {english:"What's up?",arabic:"ما الأخبار؟"},
+  {english:"Take care.",arabic:"اعتنِ بنفسك."},
+  {english:"Have a nice day.",arabic:"أتمنى لك يوماً طيباً."},
+  {english:"Thank you very much.",arabic:"شكراً جزيلاً."},
+  {english:"You're welcome.",arabic:"على الرحب والسعة."},
+  {english:"Please.",arabic:"من فضلك."},
+  {english:"Excuse me.",arabic:"عذراً."},
+  {english:"I'm sorry.",arabic:"أنا آسف."},
+  {english:"No problem.",arabic:"لا مشكلة."},
+  {english:"Don't worry about it.",arabic:"لا تقلق بشأن ذلك."},
+  {english:"Can you help me?",arabic:"هل يمكنك مساعدتي؟"},
+  {english:"I need help.",arabic:"أحتاج إلى مساعدة."},
+  {english:"I don't understand.",arabic:"لا أفهم."},
+  {english:"Could you repeat that?",arabic:"هل يمكنك تكرار ذلك؟"},
+  {english:"Please speak slowly.",arabic:"تكلم ببطء من فضلك."},
+  {english:"What does that mean?",arabic:"ماذا يعني ذلك؟"},
+  {english:"Can you explain that?",arabic:"هل يمكنك شرح ذلك؟"},
+  {english:"I don't know.",arabic:"لا أعلم."},
+  {english:"I'm not sure.",arabic:"لست متأكداً."},
+  {english:"I think so.",arabic:"أعتقد ذلك."},
+  {english:"I hope so.",arabic:"آمل ذلك."},
+  {english:"Of course.",arabic:"بالطبع."},
+  {english:"Absolutely.",arabic:"بالتأكيد."},
+  {english:"That's right.",arabic:"هذا صحيح."},
+  {english:"That's correct.",arabic:"هذا صواب."},
+  {english:"You're right.",arabic:"أنت محق."},
+  {english:"I agree with you.",arabic:"أتفق معك."},
+  {english:"I disagree.",arabic:"أختلف مع ذلك."},
+  {english:"What do you think?",arabic:"ما رأيك؟"},
+  {english:"It doesn't matter.",arabic:"لا يهم."},
+  {english:"Never mind.",arabic:"لا عليك."},
+  {english:"Let me think about it.",arabic:"دعني أفكر في الأمر."},
+  {english:"That's a good idea.",arabic:"هذه فكرة جيدة."},
+  {english:"That's interesting.",arabic:"هذا مثير للاهتمام."},
+  {english:"Really?",arabic:"حقاً؟"},
+  {english:"Are you sure?",arabic:"هل أنت متأكد؟"},
+  {english:"What time is it?",arabic:"كم الساعة؟"},
+  {english:"Where are you from?",arabic:"من أين أنت؟"},
+  {english:"I'm from...",arabic:"أنا من..."},
+  {english:"How old are you?",arabic:"كم عمرك؟"},
+  {english:"I'm... years old.",arabic:"عمري... سنة."},
+  {english:"Do you speak English?",arabic:"هل تتحدث الإنجليزية؟"},
+  {english:"I speak a little English.",arabic:"أتحدث قليلاً من الإنجليزية."},
+  {english:"I'm learning English.",arabic:"أنا أتعلم الإنجليزية."},
+  {english:"What's the weather like?",arabic:"كيف حال الطقس؟"},
+  {english:"It's hot today.",arabic:"الجو حار اليوم."},
+  {english:"It's cold outside.",arabic:"الجو بارد في الخارج."},
+  {english:"Where is the bathroom?",arabic:"أين الحمام؟"},
+  {english:"Can I have the bill please?",arabic:"هل يمكنني الحصول على الفاتورة؟"},
+  {english:"How much does this cost?",arabic:"كم سعر هذا؟"},
+  {english:"That's too expensive.",arabic:"هذا مكلف جداً."},
+  {english:"Can I get a discount?",arabic:"هل يمكنني الحصول على خصم؟"},
+  {english:"I'd like to order.",arabic:"أريد أن أطلب."},
+  {english:"What do you recommend?",arabic:"ماذا تنصح؟"},
+  {english:"I'm hungry.",arabic:"أنا جائع."},
+  {english:"I'm thirsty.",arabic:"أنا عطشان."},
+  {english:"It's delicious.",arabic:"إنه لذيذ."},
+  {english:"Enjoy your meal.",arabic:"بالعافية."},
+  {english:"Would you like some water?",arabic:"هل تريد بعض الماء؟"},
+  {english:"Let's go.",arabic:"هيا نذهب."},
+  {english:"Wait a moment.",arabic:"انتظر لحظة."},
+  {english:"I'll be right back.",arabic:"سأعود الآن."},
+  {english:"What are you doing?",arabic:"ماذا تفعل؟"},
+  {english:"I'm busy right now.",arabic:"أنا مشغول الآن."},
+  {english:"I have to go.",arabic:"يجب أن أذهب."},
+  {english:"Call me later.",arabic:"اتصل بي لاحقاً."},
+  {english:"I'll call you back.",arabic:"سأعاود الاتصال بك."},
+  {english:"Can I speak to...?",arabic:"هل يمكنني التحدث إلى...؟"},
+  {english:"Hold on, please.",arabic:"انتظر من فضلك."},
+  {english:"What's your phone number?",arabic:"ما رقم هاتفك؟"},
+  {english:"Can you give me directions?",arabic:"هل يمكنك إعطائي الاتجاهات؟"},
+  {english:"Turn left at the corner.",arabic:"اتجه يساراً عند الزاوية."},
+  {english:"Turn right at the traffic light.",arabic:"اتجه يميناً عند إشارة المرور."},
+  {english:"Go straight ahead.",arabic:"اذهب مباشرة للأمام."},
+  {english:"It's near here.",arabic:"إنه قريب من هنا."},
+  {english:"How far is it?",arabic:"كم تبعد المسافة؟"},
+  {english:"I'm lost.",arabic:"أنا تائه."},
+  {english:"Can you show me on the map?",arabic:"هل يمكنك أن تريني على الخريطة؟"},
+  {english:"I need a taxi.",arabic:"أحتاج إلى سيارة أجرة."},
+  {english:"I'm looking for a hotel.",arabic:"أبحث عن فندق."},
+  {english:"Do you have a room available?",arabic:"هل لديكم غرفة متاحة؟"},
+  {english:"I have a reservation.",arabic:"لدي حجز مسبق."},
+  {english:"What time does it open?",arabic:"في أي ساعة يفتح؟"},
+  {english:"What time does it close?",arabic:"في أي ساعة يغلق؟"},
+  {english:"Is it open on Sunday?",arabic:"هل هو مفتوح يوم الأحد؟"},
+  {english:"I'm just looking, thanks.",arabic:"أنا فقط أتفرج، شكراً."},
+  {english:"Do you accept credit cards?",arabic:"هل تقبلون بطاقات الائتمان؟"},
+  {english:"I'd like to pay in cash.",arabic:"أريد الدفع نقداً."},
+  {english:"Keep the change.",arabic:"احتفظ بالباقي."},
+  {english:"Something is wrong.",arabic:"هناك شيء خاطئ."},
+  {english:"I need a doctor.",arabic:"أحتاج إلى طبيب."},
+  {english:"Call an ambulance.",arabic:"اتصل بسيارة الإسعاف."},
+  {english:"I don't feel well.",arabic:"لا أشعر بحالة جيدة."},
+  {english:"I have a headache.",arabic:"أعاني من صداع."},
+  {english:"I'm allergic to...",arabic:"لدي حساسية من..."},
+  {english:"It's an emergency.",arabic:"إنها حالة طارئة."},
+  {english:"Help!",arabic:"النجدة!"},
+  {english:"Watch out!",arabic:"انتبه!"},
+  {english:"Be careful.",arabic:"كن حذراً."},
+  {english:"Don't touch that.",arabic:"لا تلمس ذلك."},
+  {english:"Come with me.",arabic:"تعال معي."},
+  {english:"Follow me.",arabic:"اتبعني."},
+  {english:"Stay here.",arabic:"ابقَ هنا."},
+  {english:"Sit down, please.",arabic:"اجلس من فضلك."},
+  {english:"Stand up, please.",arabic:"قم من فضلك."},
+  {english:"I understand.",arabic:"أفهم."},
+  {english:"I see.",arabic:"أفهم / أرى."},
+  {english:"Makes sense.",arabic:"هذا منطقي."},
+  {english:"That's what I thought.",arabic:"هذا ما ظننته."},
+  {english:"I know what you mean.",arabic:"أعرف ما تعنيه."},
+  {english:"I feel the same way.",arabic:"أشعر بنفس الطريقة."},
+  {english:"Long time no see.",arabic:"لم أرك منذ زمن طويل."},
+  {english:"What have you been up to?",arabic:"ماذا كنت تفعل مؤخراً؟"},
+  {english:"I've been busy lately.",arabic:"كنت مشغولاً مؤخراً."},
+  {english:"How's your family?",arabic:"كيف حال عائلتك؟"},
+  {english:"Give my regards to your family.",arabic:"أرسل تحياتي لعائلتك."},
+  {english:"I miss you.",arabic:"اشتقت إليك."},
+  {english:"I love you.",arabic:"أحبك."},
+  {english:"I'm proud of you.",arabic:"أنا فخور بك."},
+  {english:"You did a great job.",arabic:"لقد قمت بعمل رائع."},
+  {english:"Well done!",arabic:"أحسنت!"},
+  {english:"Congratulations!",arabic:"تهانيّ!"},
+  {english:"Happy birthday!",arabic:"عيد ميلاد سعيد!"},
+  {english:"Best wishes.",arabic:"مع أطيب الأمنيات."},
+  {english:"Good luck!",arabic:"حظاً موفقاً!"},
+  {english:"Have a safe trip.",arabic:"سافر بسلامة."},
+  {english:"Welcome back.",arabic:"أهلاً بعودتك."},
+  {english:"Make yourself at home.",arabic:"اشعر وكأنك في بيتك."},
+  {english:"Help yourself.",arabic:"تفضل وتناول."},
+  {english:"It's on me.",arabic:"أنا أدفع / إنها على حسابي."},
+  {english:"Let's split the bill.",arabic:"لنقسّم الفاتورة."},
+  {english:"Same as usual.",arabic:"نفس المعتاد."},
+  {english:"As soon as possible.",arabic:"في أقرب وقت ممكن."},
+  {english:"Take your time.",arabic:"خذ وقتك."},
+  {english:"Hurry up!",arabic:"تعجّل!"},
+  {english:"Slow down!",arabic:"تمهّل!"},
+  {english:"Right away.",arabic:"في الحال."},
+  {english:"In a minute.",arabic:"في دقيقة."},
+  {english:"One moment, please.",arabic:"لحظة من فضلك."},
+  {english:"Later on.",arabic:"لاحقاً."},
+  {english:"What's going on?",arabic:"ماذا يجري؟"},
+  {english:"What happened?",arabic:"ماذا حدث؟"},
+  {english:"Tell me about yourself.",arabic:"أخبرني عن نفسك."},
+  {english:"What do you do for a living?",arabic:"ما عملك؟"},
+  {english:"I work in...",arabic:"أعمل في..."},
+  {english:"I'm a student.",arabic:"أنا طالب."},
+  {english:"I'm on vacation.",arabic:"أنا في إجازة."},
+  {english:"That's too bad.",arabic:"هذا لأمر محزن."},
+  {english:"I'm so sorry to hear that.",arabic:"آسف جداً لسماع ذلك."},
+  {english:"Cheer up!",arabic:"ابتهج! / لا تحزن!"},
+  {english:"It will be okay.",arabic:"ستكون الأمور بخير."},
+  {english:"You can do it.",arabic:"أنت قادر على ذلك."},
+  {english:"Keep it up!",arabic:"واصل هكذا!"},
+  {english:"Don't give up.",arabic:"لا تستسلم."},
+  {english:"It's up to you.",arabic:"الأمر متروك لك."},
+  {english:"The more, the better.",arabic:"كلما زاد، كان أفضل."},
+  {english:"Better late than never.",arabic:"التأخير أفضل من عدم الحضور."},
+  {english:"Time flies.",arabic:"الوقت يمرّ سريعاً."},
+  {english:"It's a small world.",arabic:"العالم صغير."},
+  {english:"Actions speak louder than words.",arabic:"الأفعال أبلغ من الأقوال."},
+  {english:"Every cloud has a silver lining.",arabic:"كل محنة وفيها منحة."},
+  {english:"The best is yet to come.",arabic:"أفضل الأيام لم تأتِ بعد."},
+  {english:"Practice makes perfect.",arabic:"الممارسة تصنع الإتقان."},
+  {english:"Knowledge is power.",arabic:"المعرفة قوة."},
+  {english:"First things first.",arabic:"الأهم أولاً."},
+  {english:"Let's get started.",arabic:"لنبدأ."},
+  {english:"I can't wait.",arabic:"لا أستطيع الانتظار."},
+  {english:"I'm looking forward to it.",arabic:"أتطلع إلى ذلك بشوق."},
+  {english:"Sounds good.",arabic:"يبدو جيداً."},
+  {english:"Sounds like a plan.",arabic:"يبدو خطة رائعة."},
+  {english:"Count me in.",arabic:"اعدّني ضمن القائمة."},
+  {english:"I'm in.",arabic:"أنا معك."},
+  {english:"I'm out.",arabic:"أنا خارج / لست متاحاً."},
+  {english:"No thanks, I'm good.",arabic:"لا شكراً، أنا بخير."},
+  {english:"I'll pass.",arabic:"سأتخطى هذه المرة."},
+  {english:"That works for me.",arabic:"هذا يناسبني."},
+  {english:"That doesn't work for me.",arabic:"هذا لا يناسبني."},
+  {english:"I'll think about it.",arabic:"سأفكر في الأمر."},
+  {english:"I'll get back to you.",arabic:"سأرد عليك لاحقاً."},
+  {english:"Let me know.",arabic:"أعلمني."},
+  {english:"Keep me posted.",arabic:"أبقِني على اطلاع."},
+  {english:"Just in case.",arabic:"احتياطاً / لمجرد الحال."},
+  {english:"On second thought.",arabic:"بعد التفكير مجدداً..."},
+  {english:"To be honest.",arabic:"بصراحة / لأكون صادقاً."},
+  {english:"To tell you the truth.",arabic:"لأقول لك الحقيقة."},
+  {english:"As a matter of fact.",arabic:"في الواقع."},
+  {english:"By the way.",arabic:"بالمناسبة."},
+  {english:"In other words.",arabic:"بعبارة أخرى."},
+  {english:"For example.",arabic:"على سبيل المثال."},
+  {english:"In general.",arabic:"بشكل عام."},
+  {english:"For the most part.",arabic:"في معظم الأحيان."},
+  {english:"On the other hand.",arabic:"من ناحية أخرى."},
+  {english:"At the same time.",arabic:"في نفس الوقت."},
+  {english:"In the meantime.",arabic:"في غضون ذلك."},
+  {english:"From now on.",arabic:"من الآن فصاعداً."},
+  {english:"Once in a while.",arabic:"بين الحين والآخر."},
+  {english:"All of a sudden.",arabic:"فجأة."},
+  {english:"More or less.",arabic:"أكثر أو أقل / تقريباً."},
+  {english:"So far so good.",arabic:"حتى الآن كل شيء على ما يرام."},
+  {english:"It depends.",arabic:"يعتمد على الأمر."},
+  {english:"That's not the point.",arabic:"هذه ليست المسألة."},
+  {english:"What do you mean?",arabic:"ماذا تقصد؟"},
+  {english:"Could you be more specific?",arabic:"هل يمكنك أن تكون أكثر تحديداً؟"},
+  {english:"To make a long story short.",arabic:"لأختصر الكلام."},
+  {english:"As far as I know.",arabic:"فيما أعلم."},
+  {english:"If I remember correctly.",arabic:"إذا كانت ذاكرتي صحيحة."},
+  {english:"I have no idea.",arabic:"ليس لديّ أي فكرة."},
+  {english:"You never know.",arabic:"لا تعلم أبداً."},
+  {english:"It's worth a try.",arabic:"يستحق المحاولة."},
+  {english:"Go for it!",arabic:"اذهب على بركة الله / جرّبها!"},
+  {english:"Why not?",arabic:"ولماذا لا؟"},
+  {english:"What's the worst that could happen?",arabic:"ما أسوأ شيء يمكن أن يحدث؟"},
+  {english:"Better safe than sorry.",arabic:"الحيطة والحذر خير من الندم."},
+  {english:"Look on the bright side.",arabic:"انظر إلى الجانب المشرق."},
+  {english:"Every little bit helps.",arabic:"كل قليل يُفيد."},
+  {english:"It's the thought that counts.",arabic:"النية هي ما يهم."},
+  {english:"That means a lot to me.",arabic:"هذا يعني لي الكثير."},
+  {english:"I appreciate it.",arabic:"أقدّر ذلك."},
+  {english:"I owe you one.",arabic:"أنا مدين لك."},
+  {english:"Anytime.",arabic:"في أي وقت / حاضر دائماً."},
+  {english:"My pleasure.",arabic:"سروري."},
+  {english:"It was nothing.",arabic:"لا شيء يستحق الذكر."},
+  {english:"Don't mention it.",arabic:"لا تذكر ذلك / على الرحب."},
+  {english:"I'll do my best.",arabic:"سأبذل قصارى جهدي."},
+  {english:"I'll try my hardest.",arabic:"سأحاول بكل ما في وسعي."},
+  {english:"That's all I can do.",arabic:"هذا كل ما في وسعي."},
+  {english:"I did what I could.",arabic:"فعلت ما استطعت."},
+  {english:"Live and learn.",arabic:"التجربة خير معلّم."},
+  {english:"Easier said than done.",arabic:"القول أسهل من الفعل."},
+  {english:"I'm just kidding.",arabic:"أنا فقط أمزح."},
+  {english:"Are you serious?",arabic:"هل تتكلم بجدية؟"},
+  {english:"No way!",arabic:"مستحيل! / لا يمكن!"},
+  {english:"You're kidding!",arabic:"أنت تمزح!"},
+  {english:"That's hilarious.",arabic:"هذا مضحك جداً."},
+  {english:"That's funny.",arabic:"هذا مضحك."},
+  {english:"You made my day.",arabic:"لقد جعلت يومي رائعاً."},
+  {english:"I had a great time.",arabic:"قضيت وقتاً رائعاً."},
+  {english:"It was a pleasure.",arabic:"كان الأمر متعة."},
+  {english:"I'm looking forward to seeing you again.",arabic:"أتطلع إلى رؤيتك مرة أخرى."},
+  {english:"Stay in touch.",arabic:"ابقَ على تواصل."},
+  {english:"Let's keep in touch.",arabic:"لنبقَ على تواصل."},
+  {english:"I'll miss you.",arabic:"سأشتاق إليك."},
+  {english:"You'll be missed.",arabic:"ستُفتقَد."},
+  {english:"Take it easy.",arabic:"خذها بهدوء."},
+  {english:"Relax.",arabic:"استرخِ."},
+  {english:"Calm down.",arabic:"هدّئ نفسك."},
+  {english:"Don't panic.",arabic:"لا تتذعر."},
+  {english:"Everything will be fine.",arabic:"ستكون الأمور على ما يرام."},
+  {english:"Things could be worse.",arabic:"يمكن أن تكون الأمور أسوأ."},
+  {english:"Hang in there.",arabic:"تمسّك / اصبر قليلاً."},
+  {english:"I've got your back.",arabic:"أنا سندك / أغطي ظهرك."},
+  {english:"We're in this together.",arabic:"نحن في هذا معاً."},
+  {english:"You can count on me.",arabic:"يمكنك الاعتماد عليّ."},
+  {english:"I'll support you.",arabic:"سأدعمك."},
+  {english:"Trust me.",arabic:"ثق بي."},
+  {english:"Believe me.",arabic:"صدّقني."},
+  {english:"To be fair.",arabic:"لأكون منصفاً."},
+  {english:"That's not fair.",arabic:"هذا ليس عادلاً."},
+  {english:"Fair enough.",arabic:"هذا عادل بما يكفي."},
+  {english:"That's a deal.",arabic:"اتفقنا."},
+  {english:"Do we have a deal?",arabic:"هل اتفقنا؟"},
+  {english:"It's a deal.",arabic:"الاتفاق تمّ."},
+  {english:"I gave my word.",arabic:"أعطيت كلمتي."},
+  {english:"I promise.",arabic:"أعدك."},
+  {english:"I swear.",arabic:"أقسم."},
+  {english:"Cross my heart.",arabic:"أقسم بصدق."},
+  {english:"That's settled then.",arabic:"إذن هذا مقرّر."},
+  {english:"It's a long story.",arabic:"إنها قصة طويلة."},
+  {english:"To cut to the chase.",arabic:"للوصول مباشرة للنقطة."},
+  {english:"The bottom line is.",arabic:"خلاصة القول."},
+  {english:"That's beside the point.",arabic:"هذا خارج عن الموضوع."},
+  {english:"Let me get straight to the point.",arabic:"دعني أصل مباشرة إلى الهدف."},
+  {english:"I see your point.",arabic:"أرى وجهة نظرك."},
+  {english:"I take your point.",arabic:"أقبل وجهة نظرك."},
+  {english:"That's a good point.",arabic:"هذه نقطة وجيهة."},
+  {english:"You have a point there.",arabic:"لديك وجهة نظر هناك."},
+  {english:"I stand corrected.",arabic:"أعترف بخطئي وأصوّبه."},
+  {english:"Let's agree to disagree.",arabic:"فلنتفق على أننا نختلف."},
+  {english:"It's a matter of opinion.",arabic:"هذه مسألة رأي."},
+  {english:"Each to their own.",arabic:"لكل شخص رأيه."},
+  {english:"Whatever works for you.",arabic:"مهما كان يناسبك."},
+  {english:"As you wish.",arabic:"كما تشاء."},
+  {english:"Suit yourself.",arabic:"افعل كما تشاء."},
+  {english:"Be my guest.",arabic:"تفضّل / كن ضيفي."},
+  {english:"After you.",arabic:"بعدك."},
+  {english:"Go ahead.",arabic:"تفضل / استمر."},
+  {english:"By all means.",arabic:"بالتأكيد / على الإطلاق."},
+  {english:"I'm doing well.",arabic:"أنا بخير."},
+  {english:"Could you say that again?",arabic:"هل يمكنك قول ذلك مرة أخرى؟"},
+  {english:"What are your plans?",arabic:"ما خططك؟"},
+  {english:"I have a question.",arabic:"لدي سؤال."},
+  {english:"That makes sense.",arabic:"هذا منطقي."},
+  {english:"I'll keep that in mind.",arabic:"سأضع ذلك في الاعتبار."},
+  {english:"Let me know if you need anything.",arabic:"أخبرني إذا احتجت أي شيء."},
+  {english:"I'm on my way.",arabic:"أنا في الطريق."},
+  {english:"I'll be there soon.",arabic:"سأكون هناك قريباً."},
+  {english:"Could you do me a favour?",arabic:"هل يمكنك مساعدتي بشيء؟"},
+  {english:"That's very kind of you.",arabic:"هذا لطيف جداً منك."},
+  {english:"I'm glad to hear that.",arabic:"يسعدني سماع ذلك."},
+  {english:"What a surprise!",arabic:"يا له من مفاجأة!"},
+  {english:"I can't believe it.",arabic:"لا أستطيع تصديق ذلك."},
+  {english:"That's unbelievable.",arabic:"هذا لا يُصدَّق."},
+  {english:"I'm confused.",arabic:"أنا مرتبك."},
+  {english:"I'll figure it out.",arabic:"سأعرف كيف أتعامل معه."},
+  {english:"It's not a big deal.",arabic:"ليس أمراً مهماً كبيراً."},
+  {english:"I'll make it work.",arabic:"سأجعله يسير."},
+  {english:"I'd rather not.",arabic:"أفضّل أن لا أفعل ذلك."},
+  {english:"If you don't mind.",arabic:"إذا كنت لا تمانع."},
+  {english:"You should try it.",arabic:"يجب أن تجربها."},
+  {english:"It's worth it.",arabic:"إنه يستحق."},
+  {english:"I totally agree.",arabic:"أتفق تماماً."},
+  {english:"I beg to differ.",arabic:"أختلف معك بأدب."},
+  {english:"Let's move on.",arabic:"لننتقل إلى الأمام."},
+  {english:"I've made up my mind.",arabic:"لقد اتخذت قراري."},
+  {english:"This is just the beginning.",arabic:"هذه مجرد البداية."},
+  {english:"I wouldn't worry about it.",arabic:"لن أقلق بشأن ذلك."},
+  {english:"Mind your own business.",arabic:"اهتم بشأنك الخاص."},
+  {english:"That's life.",arabic:"هذه هي الحياة."},
+  {english:"Anything is possible.",arabic:"كل شيء ممكن."},
+];
+
+// DECKS
+const DECKS=[
+  {id:'all',    label:'🌟 الكل',     desc:'(300)',  from:0,   to:300},
+  {id:'greet',  label:'☀️ تحيات',   desc:'(25)',   from:0,   to:25},
+  {id:'daily',  label:'💬 يومي',    desc:'(55)',   from:25,  to:80},
+  {id:'travel', label:'✈️ سفر',     desc:'(30)',   from:80,  to:110},
+  {id:'social', label:'❤️ اجتماعي', desc:'(50)',   from:125, to:175},
+  {id:'idioms', label:'📖 تعابير',  desc:'(60)',   from:175, to:235},
+];
+
+// ════════════════════════════════════════════════════
+// DATE HELPERS (توقيت محلي — إصلاح UTC)
+// ════════════════════════════════════════════════════
+function todayStr(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function yesterdayStr(){
+  const d=new Date();d.setDate(d.getDate()-1);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+// ════════════════════════════════════════════════════
+// STORAGE
+// ════════════════════════════════════════════════════
+const S={
+  get:(k,d)=>{try{const v=localStorage.getItem('lt_'+k);return v!==null?JSON.parse(v):d;}catch{return d;}},
+  set:(k,v)=>{try{localStorage.setItem('lt_'+k,JSON.stringify(v));}catch{}},
+  clear:()=>{try{Object.keys(localStorage).filter(k=>k.startsWith('lt_')).forEach(k=>localStorage.removeItem(k));}catch{}}
+};
+
+// ════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════
+let phrases=[...DEFAULT_PHRASES];
+let ST={};
+let sessionXP=0,sessionRight=0,sessionWrong=0;
+let sessionMistakes=new Set();
+let reviewMode=false,reviewQueue=[],reviewIdx=0;
+let streakBroken=false;
+let activeDeckId='all';
+
+function loadState(){
+  const today=todayStr();
+  ST={
+    index:       S.get('index',0),
+    streak:      S.get('streak',0),
+    bestStreak:  S.get('bestStreak',0),
+    lastGoal:    S.get('lastGoal',''),
+    xp:          S.get('xp',0),
+    completed:   S.get('completed',0),
+    todayDate:   S.get('todayDate',''),
+    todayCount:  S.get('todayCount',0),
+    goalDone:    S.get('goalDone',false),
+    sfx:         S.get('sfx',true),
+    deckId:      S.get('deckId','all'),
+    onboardDone: S.get('onboardDone',false),
+    allTimeRight:S.get('allTimeRight',0),
+    allTimeWrong:S.get('allTimeWrong',0),
+    daysActive:  S.get('daysActive',0),
+    lastActive:  S.get('lastActive',''),
+  };
+  if(ST.todayDate!==today){ST.todayCount=0;ST.todayDate=today;ST.goalDone=false;}
+  streakBroken=false;
+  if(ST.lastGoal&&ST.lastGoal!==today&&ST.lastGoal!==yesterdayStr()){
+    const diff=Math.floor((new Date(today)-new Date(ST.lastGoal))/86400000);
+    if(diff>1){ST.streak=0;streakBroken=true;}
+  }
+  // Track active days
+  if(ST.lastActive!==today){
+    ST.daysActive++;ST.lastActive=today;
+  }
+  save();
+}
+function save(){Object.keys(ST).forEach(k=>S.set(k,ST[k]));}
+
+// ════════════════════════════════════════════════════
+// SFX — Web Audio API
+// ════════════════════════════════════════════════════
+let audioCtx=null;
+function ac(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function beep(freq,type,vol,dur){
+  if(!ST.sfx)return;
+  try{
+    const ctx=ac(),o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.value=freq;o.type=type;
+    g.gain.setValueAtTime(vol,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+dur);
+    o.start(ctx.currentTime);o.stop(ctx.currentTime+dur);
+  }catch{}
+}
+function sfxCorrect(){beep(880,'sine',0.08,0.13);}
+function sfxWrong(){beep(160,'sawtooth',0.06,0.09);}
+function sfxComplete(){
+  if(!ST.sfx)return;
+  try{const ctx=ac();[523,659,784].forEach((f,i)=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';
+    const t=ctx.currentTime+i*0.09;
+    g.gain.setValueAtTime(0.1,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.18);
+    o.start(t);o.stop(t+0.18);
+  });}catch{}
+}
+function sfxGoal(){
+  if(!ST.sfx)return;
+  try{const ctx=ac();[523,659,784,1047].forEach((f,i)=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';
+    const t=ctx.currentTime+i*0.11;
+    g.gain.setValueAtTime(0.11,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.22);
+    o.start(t);o.stop(t+0.22);
+  });}catch{}
+}
+function sfxLevelUp(){
+  if(!ST.sfx)return;
+  try{const ctx=ac();[392,523,659,784,1047].forEach((f,i)=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';
+    const t=ctx.currentTime+i*0.1;
+    g.gain.setValueAtTime(0.1,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.2);
+    o.start(t);o.stop(t+0.2);
+  });}catch{}
+}
+
+// ════════════════════════════════════════════════════
+// PWA — Manifest + Install Prompt
+// ════════════════════════════════════════════════════
+function setupPWA(){
+  try{
+    const canvas=document.createElement('canvas');
+    canvas.width=canvas.height=192;
+    const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#1a1714';
+    const r=38;const s=192;
+    ctx.beginPath();ctx.moveTo(r,0);ctx.lineTo(s-r,0);
+    ctx.quadraticCurveTo(s,0,s,r);ctx.lineTo(s,s-r);
+    ctx.quadraticCurveTo(s,s,s-r,s);ctx.lineTo(r,s);
+    ctx.quadraticCurveTo(0,s,0,s-r);ctx.lineTo(0,r);
+    ctx.quadraticCurveTo(0,0,r,0);ctx.closePath();ctx.fill();
+    ctx.font='100px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('✍',96,100);
+    const icon=canvas.toDataURL('image/png');
+    const manifest={name:'LinguaTrace — تعلم الإنجليزية',short_name:'LinguaTrace',
+      description:'تعلم الإنجليزية يومياً بالكتابة الشبحية',
+      start_url:'.',display:'standalone',background_color:'#f5f1ea',theme_color:'#1a1714',
+      lang:'ar',dir:'rtl',
+      icons:[{src:icon,sizes:'192x192',type:'image/png'},{src:icon,sizes:'512x512',type:'image/png'}]
+    };
+    const blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});
+    document.getElementById('pwa-manifest').href=URL.createObjectURL(blob);
+    // Apple touch icon
+    const li=document.createElement('link');li.rel='apple-touch-icon';li.href=icon;
+    document.head.appendChild(li);
+  }catch{}
+}
+
+let installPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();installPrompt=e;
+  document.getElementById('btn-install').style.display='flex';
+});
+window.addEventListener('appinstalled',()=>{
+  document.getElementById('btn-install').style.display='none';
+  showToast('تم تثبيت التطبيق على هاتفك 🎉');
+});
+
+// ════════════════════════════════════════════════════
+// AdSense push (SPA fix)
+// ════════════════════════════════════════════════════
+function pushAds(id){
+  try{document.querySelectorAll('#'+id+' .adsbygoogle:not([data-ad-status])').forEach(()=>(window.adsbygoogle=window.adsbygoogle||[]).push({}));}catch{}
+}
+
+// ════════════════════════════════════════════════════
+// VIEWS
+// ════════════════════════════════════════════════════
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  pushAds(id);
+  if(id==='view-practice') document.getElementById('card').focus();
+}
+
+// ════════════════════════════════════════════════════
+// DECK MANAGEMENT
+// ════════════════════════════════════════════════════
+function buildDeckRow(){
+  const row=document.getElementById('deck-row');
+  row.innerHTML='';
+  DECKS.forEach(d=>{
+    const chip=document.createElement('button');
+    chip.className='deck-chip'+(d.id===activeDeckId?' active':'');
+    chip.textContent=d.label+' '+d.desc;
+    chip.addEventListener('click',()=>selectDeck(d.id));
+    row.appendChild(chip);
+  });
+}
+function selectDeck(id){
+  activeDeckId=id;ST.deckId=id;ST.index=0;save();
+  const deck=DECKS.find(d=>d.id===id)||DECKS[0];
+  phrases=DEFAULT_PHRASES.slice(deck.from,deck.to);
+  buildDeckRow();
+  updateHome();
+  showToast('وحدة: '+deck.label);
+}
+function restoreDeck(){
+  activeDeckId=ST.deckId||'all';
+  const deck=DECKS.find(d=>d.id===activeDeckId)||DECKS[0];
+  phrases=DEFAULT_PHRASES.slice(deck.from,deck.to);
+}
+
+// ════════════════════════════════════════════════════
+// HOME UPDATE
+// ════════════════════════════════════════════════════
+function updateHome(){
+  // Streak
+  const hero=document.getElementById('streak-hero');
+  document.getElementById('streak-num').textContent=ST.streak;
+  hero.classList.toggle('streak-zero',ST.streak===0);
+  document.getElementById('streak-label').textContent=ST.streak===1?'يوم متتالي':'أيام متتالية';
+  document.getElementById('streak-broken').style.display=streakBroken&&ST.streak===0?'block':'none';
+  // XP
+  const lvl=Math.floor(ST.xp/XP_PER_LEVEL)+1;
+  const lvlXP=ST.xp%XP_PER_LEVEL;
+  document.getElementById('level-badge').textContent='LV '+lvl;
+  document.getElementById('xp-text').textContent=lvlXP+' / '+XP_PER_LEVEL+' XP';
+  document.getElementById('xp-bar').style.width=Math.round(lvlXP/XP_PER_LEVEL*100)+'%';
+  // Goal
+  const gp=Math.min(Math.round(ST.todayCount/DAILY_GOAL*100),100);
+  document.getElementById('goal-badge').textContent=Math.min(ST.todayCount,DAILY_GOAL)+' / '+DAILY_GOAL;
+  document.getElementById('goal-pct-text').textContent=gp+'%';
+  document.getElementById('goal-bar').style.width=gp+'%';
+  document.getElementById('goal-count-label').textContent=ST.todayCount+' عبارة';
+  document.getElementById('goal-today-label').textContent=ST.goalDone?'✅ اكتمل':'اليوم';
+  // Total
+  const tp=Math.min(Math.round(ST.completed/phrases.length*100),100);
+  document.getElementById('total-count-label').textContent=Math.min(ST.completed,phrases.length)+' / '+phrases.length;
+  document.getElementById('total-bar').style.width=tp+'%';
+  // Tip
+  const dayOfWeek=new Date().getDay();
+  document.getElementById('tip-text').textContent=TIPS[dayOfWeek%TIPS.length];
+  // CTA
+  const cta=document.getElementById('btn-cta')||document.getElementById('btn-start');
+  const cl=document.getElementById('cta-label');
+  if(ST.goalDone){cta.classList.add('goal-done');cl.textContent='مواصلة التعلم (الهدف مكتمل ✅)';}
+  else if(ST.todayCount>0){cta.classList.remove('goal-done');cl.textContent='استمر — '+ST.todayCount+' / '+DAILY_GOAL+' ✦';}
+  else{cta.classList.remove('goal-done');cl.textContent='ابدأ الجلسة اليومية ▶';}
+  // SFX btn
+  const sb=document.getElementById('btn-sfx');
+  sb.textContent=ST.sfx?'🔊':'🔇';
+  sb.classList.toggle('on',ST.sfx);
+  // Decks
+  buildDeckRow();
+}
+
+// ════════════════════════════════════════════════════
+// STATS UPDATE
+// ════════════════════════════════════════════════════
+function updateStats(){
+  const total=ST.allTimeRight+ST.allTimeWrong;
+  const acc=total>0?Math.round(ST.allTimeRight/total*100):null;
+  document.getElementById('sc-streak').textContent=ST.bestStreak;
+  document.getElementById('sc-xp').textContent=ST.xp.toLocaleString('ar');
+  document.getElementById('sc-completed').textContent=ST.completed.toLocaleString('ar');
+  document.getElementById('sc-acc').textContent=acc!==null?acc+'%':'—';
+  document.getElementById('sc-days').textContent=ST.daysActive;
+  document.getElementById('sc-level').textContent=Math.floor(ST.xp/XP_PER_LEVEL)+1;
+}
+
+// ════════════════════════════════════════════════════
+// ONBOARDING
+// ════════════════════════════════════════════════════
+let obSlide=0;
+function obGo(n){
+  obSlide=n;
+  document.getElementById('ob-track').style.transform=`translateX(${100*n}%)`;
+  document.querySelectorAll('.ob-dot').forEach((d,i)=>d.classList.toggle('active',i===n));
+  document.getElementById('ob-next').textContent=n===2?'ابدأ الآن 🚀':'التالي ←';
+}
+document.getElementById('ob-next').addEventListener('click',()=>{
+  if(obSlide<2) obGo(obSlide+1);
+  else finishOnboard();
+});
+document.getElementById('ob-skip').addEventListener('click',finishOnboard);
+document.querySelectorAll('.ob-dot').forEach(d=>d.addEventListener('click',()=>obGo(+d.dataset.i)));
+function finishOnboard(){ST.onboardDone=true;save();showView('view-home');updateHome();}
+
+// ════════════════════════════════════════════════════
+// PRACTICE
+// ════════════════════════════════════════════════════
+let typedCount=0,isComplete=false,rateIdx=0;
+
+function loadPhrase(){
+  const idx=reviewMode?reviewQueue[reviewIdx]:ST.index%phrases.length;
+  typedCount=0;isComplete=false;
+  const phrase=phrases[idx];
+  const disp=document.getElementById('phrase-display');
+  disp.innerHTML='';
+  [...phrase.english].forEach(ch=>{
+    const s=document.createElement('span');
+    s.className='ch ghost';s.textContent=ch===' '?'\u00A0':ch;
+    disp.appendChild(s);
+  });
+  const cur=document.createElement('span');cur.className='cursor';cur.id='cursor';
+  disp.appendChild(cur);moveCursor();
+  document.getElementById('arabic-line').textContent=phrase.arabic||'';
+  document.getElementById('card-num').textContent='#'+String(idx+1).padStart(3,'0');
+  const pct=reviewMode?Math.round(reviewIdx/reviewQueue.length*100):Math.round(idx/phrases.length*100);
+  document.getElementById('mini-fill').style.width=pct+'%';
+  document.getElementById('mini-fill').classList.toggle('rv',reviewMode);
+  document.getElementById('review-badge').classList.toggle('show',reviewMode);
+  updatePracticeHUD();
+  speak(phrase.english);
+  document.getElementById('card').focus();
+  document.getElementById('real-input').value='';
+}
+
+function moveCursor(){
+  const spans=document.getElementById('phrase-display').querySelectorAll('.ch');
+  const cur=document.getElementById('cursor');if(!cur)return;
+  if(typedCount>=spans.length) document.getElementById('phrase-display').appendChild(cur);
+  else document.getElementById('phrase-display').insertBefore(cur,spans[typedCount]);
+}
+function updatePracticeHUD(){
+  document.getElementById('ps-streak').textContent=ST.streak;
+  document.getElementById('ps-today').textContent=Math.min(ST.todayCount,DAILY_GOAL)+'/'+DAILY_GOAL;
+  const ec=sessionMistakes.size;
+  document.getElementById('ps-err-chip').style.display=ec>0?'flex':'none';
+  document.getElementById('ps-errors').textContent=ec;
+}
+
+// ════════════════════════════════════════════════════
+// TYPING
+// ════════════════════════════════════════════════════
+function handleKey(key){
+  if(isComplete)return;
+  const idx=reviewMode?reviewQueue[reviewIdx]:ST.index%phrases.length;
+  const phrase=phrases[idx].english;
+  const spans=document.getElementById('phrase-display').querySelectorAll('.ch');
+  if(key==='Backspace'){if(typedCount>0){typedCount--;spans[typedCount].className='ch ghost';moveCursor();}return;}
+  if(key.length!==1||typedCount>=phrase.length)return;
+
+  if(key===phrase[typedCount]){
+    spans[typedCount].className='ch correct';typedCount++;sfxCorrect();
+    ST.allTimeRight++;sessionRight++;
+    moveCursor();
+    if(typedCount===phrase.length){
+      isComplete=true;document.getElementById('cursor')?.remove();
+      sfxComplete();
+      const card=document.getElementById('card');
+      card.classList.add('correct-flash');
+      card.addEventListener('animationend',()=>card.classList.remove('correct-flash'),{once:true});
+      setTimeout(phraseCompleted,680);
+    }
+  } else {
+    sessionMistakes.add(idx);sfxWrong();
+    ST.allTimeWrong++;sessionWrong++;
+    spans[typedCount].className='ch wrong';
+    const card=document.getElementById('card');card.classList.add('shake');
+    card.addEventListener('animationend',()=>{
+      card.classList.remove('shake');
+      const sp=document.getElementById('phrase-display').querySelectorAll('.ch');
+      if(sp[typedCount])sp[typedCount].className='ch ghost';
+    },{once:true});
+    updatePracticeHUD();
+  }
+}
+
+// ════════════════════════════════════════════════════
+// PHRASE COMPLETED
+// ════════════════════════════════════════════════════
+function phraseCompleted(){
+  if(reviewMode){
+    reviewIdx++;
+    if(reviewIdx>=reviewQueue.length){reviewMode=false;showToast('أحسنت! راجعت كل العبارات الصعبة ✓');updateHome();showView('view-home');}
+    else loadPhrase();
+    return;
+  }
+  const lvlBefore=Math.floor(ST.xp/XP_PER_LEVEL);
+  sessionXP+=XP_PER_PHRASE;ST.completed++;ST.todayCount++;ST.xp+=XP_PER_PHRASE;
+  ST.index=(ST.index+1)%phrases.length;
+  const lvlAfter=Math.floor(ST.xp/XP_PER_LEVEL);
+  if(lvlAfter>lvlBefore){sfxLevelUp();setTimeout(()=>showToast('🏆 ارتقيت للمستوى '+(lvlAfter+1)+'!'),500);}
+
+  if(ST.todayCount>=DAILY_GOAL&&!ST.goalDone){
+    ST.goalDone=true;
+    const today=todayStr();
+    if(!ST.lastGoal||ST.lastGoal===yesterdayStr())ST.streak++;
+    else if(ST.lastGoal!==today)ST.streak=1;
+    ST.lastGoal=today;
+    if(ST.streak>ST.bestStreak)ST.bestStreak=ST.streak;
+    save();sfxGoal();confetti();
+    setTimeout(showGoalModal,400);return;
+  }
+  save();loadPhrase();
+}
+
+// ════════════════════════════════════════════════════
+// GOAL DONE MODAL
+// ════════════════════════════════════════════════════
+function showGoalModal(){
+  const total=sessionRight+sessionWrong;
+  const acc=total>0?Math.round(sessionRight/total*100):100;
+  document.getElementById('goal-streak-val').textContent=ST.streak;
+  document.getElementById('gs-xp').textContent='+'+sessionXP;
+  document.getElementById('gs-acc').textContent=acc+'%';
+  document.getElementById('gs-mistakes').textContent=sessionMistakes.size;
+  const rb=document.getElementById('btn-review-mistakes');
+  rb.classList.toggle('show',sessionMistakes.size>0);
+  document.getElementById('mistakes-count').textContent=sessionMistakes.size;
+  document.getElementById('modal-goal').classList.add('open');
+  pushAds('modal-goal');
+}
+
+// ════════════════════════════════════════════════════
+// REVIEW MODE
+// ════════════════════════════════════════════════════
+function startReview(){
+  reviewMode=true;reviewQueue=[...sessionMistakes];reviewIdx=0;
+  document.getElementById('modal-goal').classList.remove('open');
+  showView('view-practice');loadPhrase();
+}
+
+// ════════════════════════════════════════════════════
+// CONFETTI
+// ════════════════════════════════════════════════════
+function confetti(){
+  const colors=['#b5873a','#1a6348','#5c5ce0','#f4701b','#d4a84b','#c0392b','#fff'];
+  for(let i=0;i<55;i++){
+    const el=document.createElement('div');el.className='confetti-piece';
+    const size=5+Math.random()*9;
+    el.style.cssText=`
+      top:${Math.random()*30-5}vh;left:${Math.random()*100}vw;
+      width:${size}px;height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      border-radius:${Math.random()>.5?'50%':'2px'};
+      animation-duration:${1.2+Math.random()*2}s;
+      animation-delay:${Math.random()*0.6}s;
+    `;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),3500);
+  }
+}
+
+// ════════════════════════════════════════════════════
+// TTS
+// ════════════════════════════════════════════════════
+const synth=window.speechSynthesis;
+function speak(text){if(!synth)return;synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=RATES[rateIdx];u.pitch=1;synth.speak(u);}
+
+// ════════════════════════════════════════════════════
+// SHARE
+// ════════════════════════════════════════════════════
+function shareProgress(){
+  const text=`تعلمت ${ST.todayCount} عبارة إنجليزية اليوم على LinguaTrace 🔥 ${ST.streak} ${ST.streak===1?'يوم':'أيام'} متتالية\nجرّب التطبيق: linguatrace.com\n\n#تعلم_الإنجليزية #LinguaTrace`;
+  if(navigator.share)navigator.share({title:'LinguaTrace',text}).catch(()=>{});
+  else navigator.clipboard.writeText(text).then(()=>showToast('تم النسخ للمشاركة ✓'));
+}
+
+// ════════════════════════════════════════════════════
+// BACKUP
+// ════════════════════════════════════════════════════
+function exportBackup(){
+  const data=JSON.stringify({...ST,exportedAt:new Date().toISOString(),version:'3'},null,2);
+  Object.assign(document.createElement('a'),{href:'data:application/json,'+encodeURIComponent(data),download:'linguatrace-backup.json'}).click();
+  showToast('تم تصدير النسخة الاحتياطية ✓');
+}
+function importBackupFile(file){
+  if(!file)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const d=JSON.parse(e.target.result);
+      ['index','streak','bestStreak','lastGoal','xp','completed','todayDate','todayCount','goalDone','sfx','deckId','allTimeRight','allTimeWrong','daysActive','lastActive'].forEach(k=>{if(d[k]!==undefined)ST[k]=d[k];});
+      save();streakBroken=false;restoreDeck();updateHome();
+      showToast('تم استيراد النسخة الاحتياطية ✓');
+    }catch{showToast('⚠ ملف غير صالح');}
+  };
+  r.readAsText(file);
+}
+
+// ════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════
+let toastTimer=null;
+function showToast(msg,dur=2800){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),dur);
+}
+
+// ════════════════════════════════════════════════════
+// SKIP
+// ════════════════════════════════════════════════════
+function skipPhrase(){
+  if(reviewMode){reviewIdx=Math.min(reviewIdx+1,reviewQueue.length-1);loadPhrase();return;}
+  ST.index=(ST.index+1)%phrases.length;save();loadPhrase();
+}
+
+// ════════════════════════════════════════════════════
+// KEYBOARD
+// ════════════════════════════════════════════════════
+document.addEventListener('keydown',e=>{
+  if(document.querySelector('.modal-overlay.open'))return;
+  if(!document.getElementById('view-practice').classList.contains('active'))return;
+  if(e.key==='Tab'||e.key==='Enter'){e.preventDefault();skipPhrase();return;}
+  if(e.key==='Backspace'){e.preventDefault();handleKey('Backspace');return;}
+  if(e.key.length===1){e.preventDefault();handleKey(e.key);}
+});
+
+const realInput=document.getElementById('real-input');
+realInput.addEventListener('keydown',e=>{if(e.key==='Backspace'){e.preventDefault();handleKey('Backspace');}});
+realInput.addEventListener('input',()=>{const v=realInput.value;if(!v)return;handleKey(v.slice(-1));realInput.value='';});
+document.getElementById('card').addEventListener('click',()=>{document.getElementById('card').focus();realInput.focus();});
+
+// ════════════════════════════════════════════════════
+// EVENT LISTENERS
+// ════════════════════════════════════════════════════
+
+// Home → Practice
+document.getElementById('btn-start').addEventListener('click',()=>{
+  reviewMode=false;sessionXP=0;sessionRight=0;sessionWrong=0;sessionMistakes=new Set();
+  showView('view-practice');loadPhrase();
+});
+
+// Back
+document.getElementById('btn-back').addEventListener('click',()=>{synth.cancel();reviewMode=false;updateHome();showView('view-home');});
+
+// Listen & Speed
+document.getElementById('btn-speak').addEventListener('click',()=>{
+  const idx=reviewMode?reviewQueue[reviewIdx]:ST.index%phrases.length;
+  speak(phrases[idx].english);
+});
+document.getElementById('btn-speed').addEventListener('click',function(){rateIdx=(rateIdx+1)%RATES.length;this.textContent=RATE_LB[rateIdx];});
+document.getElementById('btn-skip').addEventListener('click',skipPhrase);
+
+// SFX
+document.getElementById('btn-sfx').addEventListener('click',()=>{ST.sfx=!ST.sfx;save();updateHome();showToast(ST.sfx?'المؤثرات الصوتية مفعّلة 🔊':'المؤثرات الصوتية معطّلة 🔇');});
+
+// Stats
+document.getElementById('btn-stats-open').addEventListener('click',()=>{updateStats();showView('view-stats');});
+document.getElementById('btn-stats-back').addEventListener('click',()=>showView('view-home'));
+
+// Share
+document.getElementById('btn-share-home').addEventListener('click',shareProgress);
+
+// Install
+document.getElementById('btn-install').addEventListener('click',async()=>{
+  if(!installPrompt)return;
+  installPrompt.prompt();
+  await installPrompt.userChoice;
+  installPrompt=null;
+  document.getElementById('btn-install').style.display='none';
+});
+
+// Backup
+document.getElementById('btn-export').addEventListener('click',exportBackup);
+document.getElementById('btn-export-modal').addEventListener('click',exportBackup);
+document.getElementById('backup-file').addEventListener('change',e=>importBackupFile(e.target.files[0]));
+document.getElementById('backup-file-modal').addEventListener('change',e=>importBackupFile(e.target.files[0]));
+
+// Reset
+document.getElementById('btn-reset-all').addEventListener('click',()=>{
+  if(!confirm('سيتم حذف كل تقدمك. هل أنت متأكد؟'))return;
+  S.clear();streakBroken=false;
+  loadState();sessionXP=0;sessionRight=0;sessionWrong=0;sessionMistakes=new Set();
+  activeDeckId='all';phrases=[...DEFAULT_PHRASES];
+  updateHome();showToast('تم إعادة تعيين كل شيء');
+});
+
+// Goal modal
+document.getElementById('btn-goal-continue').addEventListener('click',()=>{document.getElementById('modal-goal').classList.remove('open');loadPhrase();});
+document.getElementById('btn-goal-home').addEventListener('click',()=>{document.getElementById('modal-goal').classList.remove('open');synth.cancel();updateHome();showView('view-home');});
+document.getElementById('btn-goal-share').addEventListener('click',shareProgress);
+document.getElementById('btn-review-mistakes').addEventListener('click',startReview);
+
+// Import modal
+document.getElementById('btn-open-import').addEventListener('click',()=>document.getElementById('modal-import').classList.add('open'));
+document.getElementById('btn-import-cancel').addEventListener('click',()=>document.getElementById('modal-import').classList.remove('open'));
+document.getElementById('modal-import').addEventListener('click',e=>{if(e.target===document.getElementById('modal-import'))document.getElementById('modal-import').classList.remove('open');});
+document.getElementById('btn-import-reset').addEventListener('click',()=>{
+  activeDeckId='all';phrases=[...DEFAULT_PHRASES];ST.deckId='all';ST.index=0;save();
+  document.getElementById('modal-import').classList.remove('open');updateHome();
+  showToast('تم تحميل القائمة الافتراضية (300 عبارة)');
+});
+document.getElementById('btn-import-save').addEventListener('click',()=>{
+  const raw=document.getElementById('import-text').value.trim();
+  if(!raw){document.getElementById('modal-import').classList.remove('open');return;}
+  const parsed=raw.split('\n').map(l=>l.trim()).filter(Boolean).map(line=>{
+    let s=line.indexOf('|');if(s!==-1)return{english:line.slice(0,s).trim(),arabic:line.slice(s+1).trim()};
+    s=line.indexOf('\t');if(s!==-1)return{english:line.slice(0,s).trim(),arabic:line.slice(s+1).trim()};
+    return line?{english:line,arabic:''}:null;
+  }).filter(Boolean);
+  if(!parsed.length){showToast('⚠ لم يتم العثور على عبارات صالحة');return;}
+  phrases=parsed;ST.index=0;activeDeckId='custom';save();
+  document.getElementById('modal-import').classList.remove('open');
+  updateHome();showToast('تم تحميل '+parsed.length+' عبارة ✓');
+});
+
+// ════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════
+setupPWA();
+loadState();
+restoreDeck();
+
+if(ST.onboardDone){
+  showView('view-home');
+  updateHome();
+  if(streakBroken)setTimeout(()=>showToast('💔 انكسرت سلسلتك — ابدأ من جديد اليوم!'),700);
+} else {
+  showView('view-onboarding');
+}
+</script>
+</body>
+</html>
